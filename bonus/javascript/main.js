@@ -11,6 +11,13 @@
 
 $(document).ready(function(){
 
+  var source = $("#giacomino-template").html()
+  var template = Handlebars.compile(source)
+  var creazioneGriglia = "";
+  for (var i = 0; i < 36; i++) {
+    creazioneGriglia = creazioneGriglia + template();
+  }
+  $(".griglia").html(creazioneGriglia);
 
   $(".griglia").on("click",".square", function(){
     var squareActive = $(this);
@@ -32,6 +39,7 @@ $(document).ready(function(){
           }
         }
         squareActive.data("active", true);
+
       },
       error : function ( richiesta, stato, errori){
         alert("errore " + errori, stato)
